@@ -1,0 +1,105 @@
+# Compiled output
+dist/
+build/
+lib/
+*.js
+*.js.map
+*.d.ts
+*.d.ts.map
+
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# TypeScript cache
+*.tsbuildinfo
+
+# IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.settings/
+.project
+.classpath
+*.prefs
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+*.tmp
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Testing
+coverage/
+.nyc_output/
+*.test.js
+*.test.js.map
+*.spec.js
+*.spec.js.map
+
+# Build tools
+.eslintcache
+.parcel-cache/
+.next/
+.nuxt/
+.cache/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Secrets
+*.pem
+*.key
+*.crt
+*.p12
+*.jks
+secrets.json
+secrets.config
+
+# Debug
+*.log
+debug/
+.vercel
+
+# Package manager
+.brew/
+.venv/
+venv/
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Misc
+*.pid
+*.seed
+*.pid.lock
