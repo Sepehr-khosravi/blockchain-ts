@@ -1,17 +1,55 @@
+<div align="center">
+
 # ⛓️ Simple TypeScript Blockchain
 
-A lightweight, educational blockchain implementation in TypeScript demonstrating core concepts like Proof of Work, cryptographic hashing, and blockchain validation.
+A lightweight, educational blockchain implementation written in **TypeScript** demonstrating how **Proof of Work**, **SHA-256 hashing**, and **blockchain validation** work under the hood.
 
-## 🎯 Purpose
+<p>
+  <img src="https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Node.js-18+-339933?logo=node.js&logoColor=white" alt="Node.js" />
+  <img src="https://img.shields.io/badge/Jest-Tested-C21325?logo=jest" alt="Jest" />
+  <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="MIT License" />
+</p>
 
-This project was built to understand the fundamental mechanics behind blockchain technology. It implements a minimal yet functional blockchain featuring:
+</div>
 
-- SHA-256 cryptographic hashing
-- Proof of Work mining with adjustable difficulty
-- Blockchain validation
-- Tampering detection
+---
 
-> **Note:** This project is intended for educational purposes only. It is not production-ready and focuses on simplicity and readability without relying on blockchain frameworks.
+## 📖 Overview
+
+This project was built to explore the core concepts behind blockchain technology by implementing them from scratch in TypeScript.
+
+It includes mining, cryptographic hashing, blockchain validation, and tampering detection while keeping the codebase simple and easy to understand.
+
+> **Note**
+>
+> This project is intended for educational purposes only and is **not** production-ready.
+
+---
+
+## ✨ Features
+
+- 🔐 SHA-256 cryptographic hashing
+- ⛏️ Proof of Work mining
+- ⚙️ Adjustable mining difficulty
+- 🔗 Immutable blockchain
+- ✅ Blockchain validation
+- 🚨 Tampering detection
+- 🧪 Unit testing with Jest
+- 📚 Clean and beginner-friendly code
+
+---
+
+## 📑 Table of Contents
+
+- [Getting Started](#-getting-started)
+- [How It Works](#-how-it-works)
+- [Configuration](#%EF%B8%8F-configuration)
+- [Key Concepts](#-key-concepts-demonstrated)
+- [Future Improvements](#-future-improvements)
+- [Testing](#-testing)
+- [License](#-license)
+- [Contributing](#-contributing)
 
 ---
 
@@ -19,49 +57,39 @@ This project was built to understand the fundamental mechanics behind blockchain
 
 ## Prerequisites
 
-- Node.js 18 or later
-- npm or yarn
+- Node.js **18+**
+- npm
 
 ## Installation
 
 ```bash
-# Clone the repository
 git clone https://github.com/yourusername/blockchain-ts.git
 
 cd blockchain-ts
 
-# Install dependencies
 npm install
 ```
 
-## Running the Project
-
-### Development Mode
+## Development
 
 ```bash
 npm run dev
 ```
 
-### Build & Run
+## Build
 
 ```bash
-# Compile TypeScript
 npm run build
-
-# Execute compiled JavaScript
 npm start
 ```
 
-## Running Tests
+## Tests
 
 ```bash
-# Run all tests
 npm test
 
-# Watch mode
 npm run test:watch
 
-# Coverage report
 npm run test:coverage
 ```
 
@@ -69,29 +97,37 @@ npm run test:coverage
 
 # 💡 How It Works
 
-## Mining (Proof of Work)
+### ⛏️ Mining (Proof of Work)
 
-Each block must produce a hash that begins with a configurable number of leading zeros. The miner repeatedly increments the nonce until a valid hash is found.
+Every block must generate a hash beginning with a configurable number of leading zeros.
+
+The miner repeatedly increments the nonce until a valid hash is found.
 
 ```typescript
 // Difficulty 4 means hash must start with "0000"
 
 Target: 0000xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
 Valid:  0000a1b2c3d4e5f6...
+
 Invalid: 1234a1b2c3d4e5f6...
 ```
 
-## Chain Validation
+---
 
-Whenever a new block is added, the blockchain verifies that:
+### ✅ Chain Validation
 
-- Every block's hash matches its contents.
+Whenever a block is added, the blockchain verifies:
+
+- The stored hash matches the calculated hash.
 - Every block correctly references the previous block.
 - The blockchain has not been modified.
 
 ---
 
-# 📊 Sample Output
+<details>
+
+<summary><strong>📊 Sample Output</strong></summary>
 
 ```text
 🚀 Starting Simple Blockchain in TypeScript
@@ -99,110 +135,56 @@ Whenever a new block is added, the blockchain verifies that:
 
 🌍 Genesis Block created and mined!
 
-⛏️  Mining Block 0 with data: "Genesis Block"
-   Target: 0000... (difficulty: 4 zeros)
-   ✅ Block mined! Hash: 00006d7c855f9fb6...
-   ⏱️  Time: 81ms, Attempts: 18408
+⛏️ Mining Block 0 with data: "Genesis Block"
+Target: 0000...
+✅ Block mined!
+Hash: 00006d7c855f9fb6...
 
 📤 Adding Block 1...
-
-⛏️  Mining Block 1 with data: "Alice pays Bob 10 BTC"
-   ⏳ 100000 attempts... current hash: fb928109...
-   ✅ Block mined! Hash: 000040ae32282857...
-   ⏱️  Time: 193ms, Attempts: 108171
+⛏️ Mining Block 1...
+✅ Block mined!
 
 📤 Adding Block 2...
-
-⛏️  Mining Block 2 with data: "Bob pays Charlie 5 BTC"
-   ✅ Block mined! Hash: 00008bffda0bf200...
-   ⏱️  Time: 14ms, Attempts: 13756
+⛏️ Mining Block 2...
+✅ Block mined!
 
 📤 Adding Block 3...
-
-⛏️  Mining Block 3 with data: "Charlie pays Dave 2 BTC"
-   ✅ Block mined! Hash: 0000224f2360fabe...
-   ⏱️  Time: 40ms, Attempts: 38087
-
-📦 BLOCKCHAIN (4 blocks)
-═══════════════════════════════════════════
-
-Block #0
-  📝 Data: Genesis Block
-  🔗 Hash: 00006d7c855f9fb6...
-  🔙 Previous: 0
-  🔢 Nonce: 18408
-  ⏱️  Mining Time: 81ms
-  ─────────────────────────
-
-Block #1
-  📝 Data: Alice pays Bob 10 BTC
-  🔗 Hash: 000040ae32282857...
-  🔙 Previous: 00006d7c855f9fb6...
-  🔢 Nonce: 108171
-  ⏱️  Mining Time: 193ms
-  ─────────────────────────
-
-Block #2
-  📝 Data: Bob pays Charlie 5 BTC
-  🔗 Hash: 00008bffda0bf200...
-  🔙 Previous: 000040ae32282857...
-  🔢 Nonce: 13756
-  ⏱️  Mining Time: 14ms
-  ─────────────────────────
-
-Block #3
-  📝 Data: Charlie pays Dave 2 BTC
-  🔗 Hash: 0000224f2360fabe...
-  🔙 Previous: 00008bffda0bf200...
-  🔢 Nonce: 38087
-  ⏱️  Mining Time: 40ms
-  ─────────────────────────
+⛏️ Mining Block 3...
+✅ Block mined!
 
 🔍 VALIDATING BLOCKCHAIN
-─────────────────────────────
-✅ Blockchain is VALID! All 4 blocks verified.
+✅ Blockchain is VALID!
 
-⚠️  DEMONSTRATING TAMPERING DETECTION
-─────────────────────────────────────
-Attempting to modify Block 1 data...
-
-Block 1 after tampering:
-  New Hash: 0000faked
-  New Prev: 0000fake
-
-Validating tampered chain:
-
+⚠️ DEMONSTRATING TAMPERING DETECTION
 ❌ Block 1 hash is invalid!
-   Stored: 0000faked
-   Calc:   380b861aa7d03987...
 
 📊 BLOCKCHAIN STATISTICS
-─────────────────────────
 
 Total Blocks: 4
 Difficulty: 4
 Total Mining Time: 328ms
-Total Nonce Attempts: 178422
 
 ✨ Blockchain Demo Complete!
 ```
+
+</details>
 
 ---
 
 # ⚙️ Configuration
 
-The mining difficulty can be configured in `src/main.ts`.
+Mining difficulty can be configured inside **src/main.ts**.
 
 ```typescript
-// Difficulty 4 = 4 leading zeros
 const blockchain = new BlockchainService(4);
 ```
 
-### Difficulty Impact
-
-- **Difficulty 2** → Instant (recommended for testing)
-- **Difficulty 4** → Approximately 0.5–2 seconds
-- **Difficulty 5** → Approximately 5–15 seconds
+| Difficulty | Average Time | Recommended For |
+|------------|-------------:|-----------------|
+| 2 | Instant | Learning & Testing |
+| 3 | <100 ms | Demonstrations |
+| 4 | 0.5–2 sec | Default |
+| 5 | 5–15 sec | Advanced |
 
 ---
 
@@ -210,45 +192,26 @@ const blockchain = new BlockchainService(4);
 
 | Concept | Implementation |
 |----------|----------------|
-| Cryptographic Hashing | SHA-256 using the `crypto-js` library |
-| Proof of Work | Nonce increment until hash satisfies difficulty |
-| Immutable Chain | Every block references the previous block's hash |
-| Tamper Detection | Validation detects any blockchain modification |
-| Consensus | Simplified longest valid chain rule |
+| Cryptographic Hashing | SHA-256 using `crypto-js` |
+| Proof of Work | Nonce search until difficulty target is met |
+| Immutable Chain | Blocks reference the previous block's hash |
+| Blockchain Validation | Detects invalid or modified blocks |
+| Tampering Detection | Recalculates hashes and verifies integrity |
 
 ---
 
-# 🔧 Extending the Project
+# 🚀 Future Improvements
 
-Here are some ideas for future improvements:
-
-### 1. Transaction System
-
-Replace plain string data with `Transaction` objects, implement ECDSA digital signatures, and introduce the UTXO model.
-
-### 2. Persistence
-
-Store and load the blockchain using JSON, binary serialization, SQLite, or MongoDB.
-
-### 3. Networking
-
-Implement peer-to-peer communication with WebSockets, add a gossip protocol, and synchronize chains using the longest valid chain rule.
-
-### 4. Wallet
-
-Generate public/private key pairs, sign transactions, and verify signatures using elliptic curve cryptography.
-
-### 5. Consensus Variations
-
-Experiment with:
-
-- Dynamic difficulty adjustment
-- Proof of Stake (PoS)
-- Byzantine Fault Tolerance (BFT)
-
-### 6. REST API
-
-Expose blockchain functionality through an Express.js REST API.
+- [ ] Transaction objects
+- [ ] Digital signatures (ECDSA)
+- [ ] Wallet implementation
+- [ ] Blockchain persistence
+- [ ] REST API with Express
+- [ ] Peer-to-peer networking
+- [ ] Proof of Stake (PoS)
+- [ ] Dynamic difficulty adjustment
+- [ ] Merkle Trees
+- [ ] Smart Contracts
 
 ---
 
@@ -256,40 +219,44 @@ Expose blockchain functionality through an Express.js REST API.
 
 The project uses **Jest** for unit testing.
 
-Tests cover:
+Current test coverage includes:
 
-- Block creation and hashing
+- Block creation
+- Hash generation
+- Mining
 - Blockchain initialization
-- Adding new blocks
-- Blockchain validation
+- Chain validation
 - Tampering detection
 
-```bash
-# Run all tests
-npm test
+Run the tests:
 
-# Generate coverage report
+```bash
+npm test
+```
+
+Generate a coverage report:
+
+```bash
 npm run test:coverage
 ```
 
 ---
 
-# 📝 License
+# 📚 Learning Resources
 
-This project is licensed under the **MIT License**.
-
-Feel free to use, modify, and distribute it.
+- Bitcoin Whitepaper
+- Mastering Bitcoin
+- Blockchain Demo
+- TypeScript Handbook
+- Node.js Crypto Documentation
 
 ---
 
 # 🤝 Contributing
 
-Contributions are always welcome.
-
-If you have an idea, find a bug, or want to improve the project:
+Contributions are welcome!
 
 1. Fork the repository.
-
 2. Create a feature branch.
 
 ```bash
@@ -312,18 +279,24 @@ git push origin feature/AmazingFeature
 
 ---
 
-# 📚 Learning Resources
+# 📝 License
 
-- Bitcoin Whitepaper
-- Blockchain Demo
-- Mastering Bitcoin
-- TypeScript Handbook
-- Node.js Crypto Documentation
+This project is licensed under the **MIT License**.
+
+Feel free to use, modify, and distribute it.
 
 ---
 
 # 🙏 Acknowledgments
 
 - Built to better understand blockchain fundamentals.
-- Inspired by numerous blockchain tutorials and educational resources.
-- Special thanks to the open-source community.
+- Inspired by blockchain tutorials and educational resources.
+- Thanks to the open-source community for their amazing work.
+
+---
+
+<div align="center">
+
+**⭐ If you found this project useful, consider giving it a star!**
+
+</div>
