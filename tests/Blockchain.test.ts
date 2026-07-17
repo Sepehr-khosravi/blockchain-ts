@@ -4,7 +4,7 @@ import { BlockchainValidator } from '../src/validation/BlockchainValidator';
 
 describe('Blockchain Tests', () => {
     test('Block creation should generate valid hash', () => {
-        console.log("test one is performing"")
+        // console.log("test one is performing");
         const block = new Block(0, 'Test Data', '0');
         expect(block.getHash()).toBeDefined();
         expect(block.getHash().length).toBe(64); // SHA-256 = 64 hex chars
